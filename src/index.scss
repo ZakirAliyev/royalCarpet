@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+$primary-color: #754D38;
+$accent-color: #C3A570;
+$background-color: #E9E6DB;
+$border-radius-large: 50px;
+$border-radius-small: 15px;
+$dot-size: 5px;
+$line-height: 1px;
+$line-max-width: 150px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: 'Playfair', sans-serif;
+  word-wrap: break-word;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+button,
+a,
+.link {
+  transition: all 0.2s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.p-0-8 {
+  padding: 0 8px;
+}
+
+.p-0-16 {
+  padding: 0 16px;
+}
+
+.p-8 {
+  padding: 8px;
+}
+
+.p-16 {
+  padding: 16px;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    width: calc(100% / 12 * #{$i});
+  }
+}
+
+$breakpoints: (
+        'md': (max: 992px, min: 768px),
+        'sm': (max: 768px, min: 576px),
+        'xs': (max: 576px, min: null)
+);
+
+@each $name, $sizes in $breakpoints {
+  $max: map-get($sizes, max);
+  $min: map-get($sizes, min);
+
+  @if $min != null {
+    @media screen and (max-width: $max) and (min-width: $min) {
+      @for $i from 1 through 12 {
+        .col-#{$name}-#{$i} {
+          width: calc(100% / 12 * #{$i});
+        }
+      }
+    }
+  } @else {
+    @media screen and (max-width: $max) {
+      @for $i from 1 through 12 {
+        .col-#{$name}-#{$i} {
+          width: calc(100% / 12 * #{$i});
+        }
+      }
+    }
+  }
+}

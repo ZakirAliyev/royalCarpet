@@ -1,0 +1,89 @@
+/* App.css */
+.loading-screen {
+    display: flex;
+    flex-direction: column; /* Stack the text and spinner vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background: linear-gradient(135deg, #f5f5f5 0%, #f0ece7 100%); /* Subtle gradient inspired by the website's light tones */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure loading screen is on top */
+}
+
+.loading-screen h2 {
+    font-size: 40px;
+    color: #4a3728; /* Brownish tone from the navbar */
+    animation: pulse 2s ease-in-out infinite; /* Subtle pulse animation */
+    margin-bottom: 20px; /* Space between text and spinner */
+}
+
+/* Spinner styling */
+.spinner {
+    width: 30px;
+    height: 30px;
+    border: 5px solid rgba(74, 55, 40, 0.76); /* Same color as the text */
+    border-top: 4px solid transparent; /* Transparent top border to create the spinning effect */
+    border-radius: 50%;
+    animation: spin 1s linear infinite; /* Spin animation */
+}
+
+/* Main content styling */
+.main-content {
+    min-height: 100vh; /* Ensure content takes full height */
+}
+
+/* Fade-in animation */
+.fade-in {
+    animation: fadeIn 1s ease-in forwards;
+}
+
+/* Fade-out animation */
+.fade-out {
+    animation: fadeOut 1s ease-out forwards;
+}
+
+/* Keyframes for fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Keyframes for fade-out */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden; /* Hide after fade-out */
+    }
+}
+
+/* Pulse animation for loading text */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.7;
+    }
+}
+
+/* Spin animation for the spinner */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
